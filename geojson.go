@@ -30,3 +30,12 @@ func Register() {
 	gob.Register(Polygon{})
 	gob.Register(MultiPolygon{})
 }
+
+func UnMarshal(data []byte) (FeatureCollection, error) {
+	var f FeatureCollection
+	err := json.Unmarshal(data, &f)
+	if err != nil {
+		return f, err
+	}
+	return f, err
+}
